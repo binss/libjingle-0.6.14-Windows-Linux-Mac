@@ -29,6 +29,12 @@
 #include "config.h"
 #endif  // HAVE_CONFIG_H
 
+#if !defined(WIN32)
+#include <unistd.h>
+#endif
+
+
+
 #if HAVE_OPENSSL_SSL_H
 
 #include <openssl/bio.h>

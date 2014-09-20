@@ -16,6 +16,10 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#if !defined(WIN32)
+#include <unistd.h>
+#endif
+
 #include <cstring>
 
 #include "talk/base/logging.h"

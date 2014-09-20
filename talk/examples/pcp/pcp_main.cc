@@ -10,6 +10,10 @@
 #include "config.h"
 #endif  // HAVE_CONFIG_H
 
+#if !defined(WIN32)
+#include <unistd.h>
+#endif
+
 #if HAVE_OPENSSL_SSL_H
 #define USE_SSL_TUNNEL
 #endif
@@ -307,7 +311,7 @@ buzz::XmppClientSettings LoginSettings() {
   buzz::XmppClientSettings xcs;
   xcs.set_user(gUserJid.node());
   xcs.set_host(gUserJid.domain());
-  xcs.set_resource("pcp");
+  xcs.set_resource(gUserJid.resource());
   xcs.set_pass(talk_base::CryptString(gUserPass));
   talk_base::SocketAddress server(gXmppHost, gXmppPort);
   xcs.set_server(server);
